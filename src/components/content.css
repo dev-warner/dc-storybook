@@ -1,0 +1,50 @@
+.dc-storybook {
+  background-color: #f5f6fa;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  grid-template-columns: 1fr;
+}
+
+.card__item {
+  background-color: #fff;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.1);
+  max-height: 200px;
+  position: relative;
+}
+
+.card__button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  background: #039be5;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border: none;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
+}
+
+.card__button > svg {
+  fill: white;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .dc-storybook {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dc-storybook {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
