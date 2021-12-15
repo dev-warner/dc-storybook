@@ -23,8 +23,9 @@ const ContentSelect = () => {
   return (
     <Content
       schema={value.schema}
-      client={client}
       transformer={value.transformer}
+      sortKey={value.sortKey}
+      client={client}
     />
   );
 };

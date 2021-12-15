@@ -1,9 +1,12 @@
+#panel-tab-content {
+  background-color: #f5f6fa;
+}
+
 .dc-storybook {
   background-color: #f5f6fa;
   display: flex;
   flex: 1;
-  height: 100%;
-  grid-template-columns: 1fr;
+  flex-wrap: wrap;
 }
 
 .card__item {
@@ -12,7 +15,7 @@
   padding: 16px;
   border-radius: 4px;
   box-shadow: 0 1px 5px rgb(0 0 0 / 0.1);
-  max-height: 200px;
+  height: 200px;
   position: relative;
 }
 
@@ -35,15 +38,33 @@
   height: 100%;
 }
 
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px;
+}
+
+.pagination button {
+  margin-right: 8px;
+}
+.pagination label {
+  margin-right: 8px;
+}
+.grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+}
+
 @media (min-width: 768px) {
-  .dc-storybook {
-    display: grid;
+  .grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 1024px) {
-  .dc-storybook {
+  .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }

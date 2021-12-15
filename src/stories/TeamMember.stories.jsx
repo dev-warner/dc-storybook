@@ -10,6 +10,7 @@ export default {
     DynamicContent: {
       schema: 'https://amplience.com/team-ternary-member',
       transformer: (args, { content }) => content,
+      // sortKey: '/name',
     },
   },
 }
