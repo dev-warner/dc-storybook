@@ -3,7 +3,7 @@ import React from 'react'
 import { TeamMember } from './TeamMember'
 
 export default {
-  title: 'Example/TeamMember',
+  title: 'TeamMember',
   component: TeamMember,
   argTypes: {},
   parameters: {

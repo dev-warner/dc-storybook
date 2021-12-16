@@ -1,4 +1,4 @@
-import { Component, useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import AmpImage from './AmpImage'
 import PropTypes from 'prop-types'
 
@@ -97,11 +97,6 @@ export function Game({
   }, [answers, tabs, background])
 
   const { isTrue, category, score, time, image } = state
-
-  if (!answers.length) {
-    return <div>Loading...</div>
-  }
-
   const thumbnailList = answers.filter(
     (eachValue) => eachValue.tabId === category,
   )
@@ -141,7 +136,8 @@ export function Game({
             : `url(""https://assets.ccbp.in/frontend/react-js/match-game-bg.png""})`,
         }}
       >
-        {!isTrue && (
+        {!answers.length && <div>load some data</div>}
+        {answers.length && !isTrue && (
           <div className="first-div">
             <AmpImage image={image} className="big-image" alt="match" />
             <ul className="tab-elements">
@@ -178,7 +174,7 @@ export function Game({
             </ul>
           </div>
         )}
-        {isTrue && (
+        {answers.length && isTrue && (
           <div className="second-div">
             <img
               src="https://assets.ccbp.in/frontend/react-js/match-game-trophy.png"
