@@ -2,7 +2,7 @@ import React from 'react'
 import { Game } from './Game'
 
 export default {
-  title: 'Boring/Game',
+  title: 'Boring/IgnoreMe',
   component: Game,
   argTypes: {},
   parameters: {

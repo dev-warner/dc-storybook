@@ -7,7 +7,8 @@ import React from 'react'
 
 const img = (image) =>
   `https://${image.defaultHost}/i/${image.endpoint}/${image.name}`
-export const Carousel = ({ items = [] }) => {
+
+export const Carousel = ({ items = [], onClick = () => {} }) => {
   return (
     <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
       <div className="carousel-indicators">
@@ -50,7 +51,7 @@ export const Carousel = ({ items = [] }) => {
                   <h1>{item.title}</h1>
                   <p>{item.content}</p>
                   <p>
-                    <a className="btn btn-lg btn-primary" href="#">
+                    <a className="btn btn-lg btn-primary" onClick={onClick}>
                       {item.cta}
                     </a>
                   </p>

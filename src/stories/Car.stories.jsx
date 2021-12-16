@@ -2,12 +2,12 @@ import React from 'react'
 import { Car } from './Car'
 
 export default {
-  title: 'Car',
+  title: 'Definitely a Carousel',
   component: Car,
   argTypes: {},
   parameters: {
     DynamicContent: {
-      schema: 'https://game.com',
+      schema: 'https://demo-hack21.com',
       transformer: (args, { content }) => content,
     },
   },

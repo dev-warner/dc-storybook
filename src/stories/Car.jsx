@@ -4,14 +4,21 @@ import Typing from 'react-typing-animation'
 
 import { useTimeout } from 'usehooks-ts'
 import { Game } from './Game'
+import { Carousel } from './Carousel'
 
 import './ampy.css'
 
-const states = ['Dummy', 'JPEGDummy', 'MoreJPEGDummy', 'GAME']
+const states = [
+  'Dummy',
+  'JPEGDummy',
+  'MoreJPEGDummy',
+  'EvenMoreJPEGDummy',
+  'GAME',
+]
 
 export const Car = (props) => {
   const [state, setState] = useState(states[0])
-  const [time, setTime] = useState(5000)
+  const [time, setTime] = useState(6000)
   const [isPlaying, setPlaying] = useState(false)
 
   const Dummy = () => {
@@ -45,11 +52,65 @@ export const Car = (props) => {
     )
   }
 
+  const startPlaying = () => {
+    setPlaying(true)
+  }
+
   const Comps = new Map([
-    ['Dummy', () => <Dummy />],
-    ['JPEGDummy', () => <div>JPEGDummy</div>],
-    ['MoreJPEGDummy', () => <div>MoreJPEGDummy</div>],
-    ['GAME', (props) => <Game {...props} />],
+    [
+      'Dummy',
+      (props) => <Carousel {...props.propertyName1} onClick={startPlaying} />,
+    ],
+    [
+      'JPEGDummy',
+      () => (
+        <div
+          style={{
+            height: '100vh',
+            width: '100vw',
+            backgroundSize: 'cover',
+            backgroundImage:
+              'url("https://morejpeg.com/Image/JPEG/b75e2b13-6e5e-ec11-80f9-ba2c269a3d44")',
+          }}
+        ></div>
+      ),
+    ],
+    [
+      'MoreJPEGDummy',
+      () => (
+        <div
+          style={{
+            height: '100vh',
+            width: '100vw',
+            backgroundSize: 'cover',
+            backgroundImage:
+              'url("https://morejpeg.com/Image/JPEG/39011b20-6e5e-ec11-80f9-ba2c269a3d44")',
+          }}
+        ></div>
+      ),
+    ],
+    [
+      'EvenMoreJPEGDummy',
+      () => (
+        <div
+          style={{
+            height: '100vh',
+            width: '100vw',
+            backgroundSize: 'cover',
+            backgroundImage:
+              'url("https://morejpeg.com/Image/JPEG/6f81223d-6e5e-ec11-80f9-ba2c269a3d44")',
+          }}
+        >
+          <Dummy />
+        </div>
+      ),
+    ],
+    [
+      'GAME',
+      (props) => {
+        return <Game {...props.game} />
+      },
+    ],
   ])
 
   useInterval(
@@ -61,7 +122,7 @@ export const Car = (props) => {
         return
       }
 
-      setTime(time / 2)
+      setTime(time)
       setState(states[index])
     },
     isPlaying ? time : null,
