@@ -15,6 +15,12 @@
 
 - so a silly component using use more jpeg and animated ampy
 
+- we convert Game -> functional
+- we change schema to include bg game, logo, header color
+- break into DAM and add some assets
+- some boring components
+- and component that reveals game
+
 ```ts
 export {
     component: Button

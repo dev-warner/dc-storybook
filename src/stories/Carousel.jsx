@@ -5,62 +5,60 @@ import './core.css'
 
 import React from 'react'
 
-export const Carousel = () => {
+const img = (image) =>
+  `https://${image.defaultHost}/i/${image.endpoint}/${image.name}`
+export const Carousel = ({ items = [] }) => {
   return (
     <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
       <div className="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#myCarousel"
-          data-bs-slide-to="0"
-          className=""
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#myCarousel"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-          className=""
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#myCarousel"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-          className="active"
-          aria-current="true"
-        ></button>
+        {items.map((item, index) => {
+          return (
+            <button
+              type="button"
+              data-bs-target="#myCarousel"
+              data-bs-slide-to={index}
+              className=""
+              className={index === 0 ? 'active' : ''}
+              aria-current="true"
+              aria-label={`Slide ${index + 1}`}
+            />
+          )
+        })}
       </div>
       <div className="carousel-inner">
-        <div className="carousel-item active">
-          <svg
-            className="bd-placeholder-img"
-            width="100%"
-            height="100%"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <rect width="100%" height="100%" fill="#777"></rect>
-          </svg>
+        {items.map((item, index) => {
+          return (
+            <div className={'carousel-item ' + (index === 0 ? 'active' : '')}>
+              <svg
+                className="bd-placeholder-img"
+                width="100%"
+                height="100%"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                preserveAspectRatio="xMidYMid slice"
+                focusable="false"
+              >
+                {item.image ? (
+                  <image href={img(item.image)}></image>
+                ) : (
+                  <rect width="100%" height="100%" fill="#777"></rect>
+                )}
+              </svg>
 
-          <div className="container">
-            <div className="carousel-caption text-start">
-              <h1>Example headline.</h1>
-              <p>
-                Some representative placeholder content for the first slide of
-                the carousel.
-              </p>
-              <p>
-                <a className="btn btn-lg btn-primary" href="#">
-                  Sign up today
-                </a>
-              </p>
+              <div className="container">
+                <div className="carousel-caption text-start">
+                  <h1>{item.title}</h1>
+                  <p>{item.content}</p>
+                  <p>
+                    <a className="btn btn-lg btn-primary" href="#">
+                      {item.cta}
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          )
+        })}
       </div>
       <button
         className="carousel-control-prev"
